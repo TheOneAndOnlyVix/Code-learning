@@ -19,7 +19,7 @@ const db = getFirestore(app);
 
 //finish connecting firestore database
 
-const input = getElementById("input");
+const input = document.getElementById("input");
 
 input.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
@@ -29,8 +29,8 @@ input.addEventListener("keydown", async (e) => {
     //setDoc overwrites everything that was in it and replaces it with input's value
     //await lets the entire thing finish, necessary for network requests which take time
   }
-}
-const output = getElementById("output");
+})
+const output = document.getElementById("output");
 onSnapshot(doc(db, "messages", "latest"), docSnap => {
   //checks back to the same document, onSnapshot so it re-runs whenever the document changes
   if (docSnap.exists()) {
