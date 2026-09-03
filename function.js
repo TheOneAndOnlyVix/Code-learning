@@ -17,17 +17,24 @@ const firebaseConfig = {
 const app initializeApp(firebaseConfig);
 const db getFirestore(app);
 
+//finish connecting firestore database
+
 const input = getElementById("input");
 
 input.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
-
+//executes if enter is pressed
     await setDoc(doc(db, "messages", "latest"), { text: input.value });
+    // writes to a document: ID latest in collection messages
+    //setDoc overwrites everything that was in it and replaces it with input's value
+    //await lets the entire thing finish, necessary for network requests which take time
   }
 }
 const output = getElementById("output");
 onSnapshot(doc(db, "messages", "latest"), docSnap => {
+  //checks back to the same document, onSnapshot so it re-runs whenever the document changes
   if (docSnap.exists()) {
+    //ensures document exists to avoid error
     output.textContent = docSnap.data().text;
     }
   }
