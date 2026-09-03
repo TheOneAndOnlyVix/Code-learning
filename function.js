@@ -14,8 +14,8 @@ const firebaseConfig = {
 };
 // Connect and authorize your specific database
 
-const app initializeApp(firebaseConfig);
-const db getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 //finish connecting firestore database
 
